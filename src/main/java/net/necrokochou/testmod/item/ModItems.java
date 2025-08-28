@@ -16,7 +16,7 @@ public class ModItems {
             "raw_bismuth",
             () -> new Item(new Item.Properties()));
 
-    public static void Register(IEventBus eventBus) {
+    public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
 }

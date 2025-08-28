@@ -1,5 +1,7 @@
 package net.necrokochou.testmod;
 
+import net.necrokochou.testmod.block.ModBlocks;
+import net.necrokochou.testmod.item.ModCreativeModeTabs;
 import net.necrokochou.testmod.item.ModItems;
 import org.slf4j.Logger;
 
@@ -76,7 +78,10 @@ public class TestMod {
 //        // Register the Deferred Register to the mod event bus so tabs get registered
 //        CREATIVE_MODE_TABS.register(modEventBus);
 
-        ModItems.Register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
@@ -112,6 +117,14 @@ public class TestMod {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.BISMUTH);
             event.accept(ModItems.RAW_BISMUTH);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.BISMUTH_BLOCK);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(ModBlocks.BISMUTH_ORE);
         }
     }
 
