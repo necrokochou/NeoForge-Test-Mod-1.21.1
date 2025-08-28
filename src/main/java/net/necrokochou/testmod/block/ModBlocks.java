@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.necrokochou.testmod.TestMod;
+import net.necrokochou.testmod.block.custom.MagicBlock;
 import net.necrokochou.testmod.item.ModItems;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -28,6 +29,17 @@ public class ModBlocks {
             () -> new DropExperienceBlock(UniformInt.of(2, 4),
                     BlockBehaviour.Properties.of()
                             .strength(3f).requiresCorrectToolForDrops().sound(SoundType.STONE))
+    );
+    public static final DeferredBlock<Block> BISMUTH_DEEPSLATE_ORE = registerBlock(
+            "bismuth_deepslate_ore",
+            () -> new DropExperienceBlock(UniformInt.of(3, 6),
+                    BlockBehaviour.Properties.of()
+                            .strength(4f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE))
+    );
+    public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock(
+            "magic_block",
+            () -> new MagicBlock(BlockBehaviour.Properties.of()
+                    .strength(2f).requiresCorrectToolForDrops().sound(SoundType.METAL))
     );
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> blocK) {

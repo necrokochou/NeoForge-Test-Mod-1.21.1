@@ -125,6 +125,19 @@ public class TestMod {
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(ModBlocks.BISMUTH_ORE);
+            event.accept(ModBlocks.BISMUTH_DEEPSLATE_ORE);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(ModItems.RADISH);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(ModBlocks.MAGIC_BLOCK);
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModItems.CHISEL);
         }
     }
 
