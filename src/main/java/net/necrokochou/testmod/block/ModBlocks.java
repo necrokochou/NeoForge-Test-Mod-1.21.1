@@ -39,7 +39,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> MAGIC_BLOCK = registerBlock(
             "magic_block",
             () -> new MagicBlock(BlockBehaviour.Properties.of()
-                    .strength(2f).requiresCorrectToolForDrops().sound(SoundType.METAL))
+                    .strength(2f).noLootTable().sound(SoundType.METAL))
     );
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> blocK) {

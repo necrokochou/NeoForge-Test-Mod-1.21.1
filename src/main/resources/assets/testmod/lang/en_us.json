@@ -12,5 +12,12 @@
   "block.testmod.magic_block": "Magic Block",
 
   "creativetab.testmod.bismuth_items": "Bismuth Items",
-  "creativetab.testmod.bismuth_blocks": "Bismuth Blocks"
+  "creativetab.testmod.bismuth_blocks": "Bismuth Blocks",
+
+  "tooltip.testmod.magic_block": "This block is magical.",
+
+  "tooltip.testmod.chisel": "Press shift for more information.",
+  "tooltip.testmod.chisel.shift_down": "This tool can chisel blocks into other blocks.",
+
+  "tooltip.testmod.radish": "Tastes real good!"
 }
