@@ -43,6 +43,42 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(recipeOutput, BISMUTH_SMELTABLES, RecipeCategory.MISC, ModItems.BISMUTH, 0.25f, 200, "bismuth");
         oreBlasting(recipeOutput, BISMUTH_SMELTABLES, RecipeCategory.MISC, ModItems.BISMUTH, 0.25f, 100, "bismuth");
+
+        stairBuilder(ModBlocks.BISMUTH_STAIRS, Ingredient.of(ModItems.BISMUTH))
+                .group("bismuth")
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH))
+                .save(recipeOutput);
+
+        slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BISMUTH_SLAB, ModItems.BISMUTH);
+
+        buttonBuilder(ModBlocks.BISMUTH_BUTTON, Ingredient.of(ModItems.BISMUTH))
+                .group("bismuth")
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH))
+                .save(recipeOutput);
+
+        pressurePlate(recipeOutput, ModBlocks.BISMUTH_PRESSURE_PLATE, ModItems.BISMUTH);
+
+        fenceBuilder(ModBlocks.BISMUTH_FENCE, Ingredient.of(ModItems.BISMUTH))
+                .group("bismuth")
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH))
+                .save(recipeOutput);
+
+        fenceGateBuilder(ModBlocks.BISMUTH_FENCE_GATE, Ingredient.of(ModItems.BISMUTH))
+                .group("bismuth")
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH))
+                .save(recipeOutput);
+
+        wall(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BISMUTH_WALL, ModItems.BISMUTH);
+
+        doorBuilder(ModBlocks.BISMUTH_DOOR, Ingredient.of(ModItems.BISMUTH))
+                .group("bismuth")
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH))
+                .save(recipeOutput);
+
+        trapdoorBuilder(ModBlocks.BISMUTH_TRAPDOOR, Ingredient.of(ModItems.BISMUTH))
+                .group("bismuth")
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH))
+                .save(recipeOutput);
     }
 
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category,

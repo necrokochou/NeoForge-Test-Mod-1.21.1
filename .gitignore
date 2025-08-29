@@ -24,3 +24,6 @@ runs
 run-data
 
 repo
+
+# minecraft
+src/generated/resources
