@@ -1,9 +1,12 @@
 package net.necrokochou.testmod.datagen;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.necrokochou.testmod.TestMod;
 import net.necrokochou.testmod.block.ModBlocks;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -45,6 +48,27 @@ public class ModBlockStateProvider extends BlockStateProvider {
 //        blockItem(ModBlocks.BISMUTH_WALL);
 //        blockItem(ModBlocks.BISMUTH_DOOR);
         blockItem(ModBlocks.BISMUTH_TRAPDOOR, "_bottom");
+        lampBlock(ModBlocks.BISMUTH_LAMP);
+    }
+
+    private void lampBlock(DeferredBlock<?> block) {
+        String name = BuiltInRegistries.BLOCK.getKey(block.get()).getPath();
+        ModelFile lampOff = models().cubeAll(name + "_off", modLoc("block/" + name + "_off"));
+        ModelFile lampOn = models().cubeAll(name + "_on", modLoc("block/" + name + "_on"));
+
+        getVariantBuilder(block.get()).forAllStates(state -> {
+            if (state.getValue(BlockStateProperties.LIT)) {
+                return ConfiguredModel.builder()
+                        .modelFile(lampOn)
+                        .build();
+            } else {
+                return ConfiguredModel.builder()
+                        .modelFile(lampOff)
+                        .build();
+            }
+        });
+
+        simpleBlockItem(block.get(), lampOff);
     }
 
     private void blockWithItem(DeferredBlock<?> block) {

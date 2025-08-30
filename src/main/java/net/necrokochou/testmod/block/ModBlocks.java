@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.necrokochou.testmod.TestMod;
+import net.necrokochou.testmod.block.custom.BismuthLampBlock;
 import net.necrokochou.testmod.block.custom.MagicBlock;
 import net.necrokochou.testmod.item.ModItems;
 import net.neoforged.bus.api.IEventBus;
@@ -129,6 +130,14 @@ public class ModBlocks {
                             .requiresCorrectToolForDrops()
                             .sound(SoundType.METAL)
                             .noOcclusion())
+    );
+
+    public static final DeferredBlock<Block> BISMUTH_LAMP = registerBlock(
+            "bismuth_lamp",
+            () -> new BismuthLampBlock(BlockBehaviour.Properties.of()
+                    .strength(2f)
+                    .requiresCorrectToolForDrops()
+                    .lightLevel(state -> state.getValue(BismuthLampBlock.LIT) ? 15 : 0))
     );
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> blocK) {
