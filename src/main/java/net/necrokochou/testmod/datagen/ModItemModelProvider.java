@@ -6,9 +6,11 @@ import net.minecraft.world.level.block.Block;
 import net.necrokochou.testmod.TestMod;
 import net.necrokochou.testmod.block.ModBlocks;
 import net.necrokochou.testmod.item.ModItems;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -28,7 +30,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         fenceItem(ModBlocks.BISMUTH_FENCE, ModBlocks.BISMUTH_BLOCK);
         wallItem(ModBlocks.BISMUTH_WALL, ModBlocks.BISMUTH_BLOCK);
 
-        basicItem(ModBlocks.BISMUTH_DOOR.get().asItem());
+        basicItem(ModBlocks.BISMUTH_DOOR.asItem());
+
+        handheldItem(ModItems.BISMUTH_SWORD);
+        handheldItem(ModItems.BISMUTH_PICKAXE);
+        handheldItem(ModItems.BISMUTH_SHOVEL);
+        handheldItem(ModItems.BISMUTH_AXE);
+        handheldItem(ModItems.BISMUTH_HOE);
     }
 
     public void buttonItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
@@ -43,21 +51,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         wallInventory(block.getId().getPath(), modLoc("block/" + baseBlock.getId().getPath()));
     }
 
-//    public void buttonItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
-//        this.withExistingParent(block.getId().getPath(), mcLoc("block/button_inventory"))
-//                .texture("particle", ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID,
-//                        "block/" + baseBlock.getId().getPath()));
-//    }
-//
-//    public void fenceItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
-//        this.withExistingParent(block.getId().getPath(), mcLoc("block/fence_inventory"))
-//                .texture("texture", ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID,
-//                        "block/" + baseBlock.getId().getPath()));
-//    }
-//
-//    public void wallItem(DeferredBlock<?> block, DeferredBlock<Block> baseBlock) {
-//        this.withExistingParent(block.getId().getPath(), mcLoc("block/wall_inventory"))
-//                .texture("wall", ResourceLocation.fromNamespaceAndPath(TestMod.MOD_ID,
-//                        "block/" + baseBlock.getId().getPath()));
-//    }
+    private ItemModelBuilder handheldItem(DeferredItem<?> item) {
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.parse("item/handheld"))
+                .texture("layer0", modLoc("item/" + item.getId().getPath()));
+    }
 }
